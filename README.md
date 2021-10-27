@@ -11,7 +11,7 @@ Munan Ning*, Donghuan Lu*, Dong Wei†, Cheng Bian, Chenglang Yuan, Shuang Yu, K
 - [Requirements](#requirements)
 - [Usage](#usage)
 - [License](#license)
-- [Notes](#note)
+- [Notes](#notes)
 
 ## Introduction
 
@@ -31,10 +31,11 @@ The code requires Pytorch >= 0.4.1 with python 3.6. The code is trained using a 
 * Set the data paths
 * Set the pretrained model paths
 
-3. Training-
-* To run the code:
+3. Training-quick
+* To run the code with our weights and anchors (anchors/cluster_centroids_full_10.pkl):
 ~~~~
-python train.py
+python3 train_active_stage1.py
+python3 train_active_stage2.py
 ~~~~
 * During the training, the generated files (log file) will be written in the folder 'runs/..'.
 
@@ -46,15 +47,39 @@ python3 test.py
 ~~~~
 to see the results.
 
-4. Constructing anchors
-* Setting the config file 'configs/CAC_from_gta_to_city.yml' as illustrated before.
-* Run:
+5. Training-whole process
+* Setting the config files.
+* Stage 1:
+* 1-save_feat_source.py: get the './features/full_dataset_objective_vectors.pkl'
 ~~~~
-python cac.py
+python3 save_feat_source.py
 ~~~~
-* The anchor file would be in 'run/cac_from_gta_to_city/..'
+* 2-cluster_anchors_source.py: cluster the './features/full_dataset_objective_vectors.pkl' to './anchors/cluster_centroids_full_10.pkl'
+~~~~
+python3 cluster_anchors_source.py
+~~~~
+* 3-select_active_samples.py: select active samples with './anchors/cluster_centroids_full_10.pkl' to 'stage1_cac_list_0.05.txt'
+~~~~
+python3 select_active_samples.py
+~~~~
+* 4-train_active_stage1.py: train stage1 model with anchors './anchors/cluster_centroids_full_10.pkl' and active samples 'stage1_cac_list_0.05.txt', get the 'from_gta5_to_cityscapes_on_deeplab101_best_model_stage1.pkl', which is stored in the runs/active_from_gta_to_city_stage1
+~~~~
+python3 train_active_stage1.py
+~~~~
 
-
+* Stage 2:
+* 1-save_feat_target.py: get the './features/target_full_dataset_objective_vectors.pkl.pkl'
+~~~~
+python3 save_feat_target.py
+~~~~
+* 2-cluster_anchors_target.py: cluster the './features/target_full_dataset_objective_vectors.pkl' to './anchors/cluster_centroids_full_target_10.pkl'
+~~~~
+python3 cluster_anchors_target.py
+~~~~
+* 3-train_active_stage2.py: train stage2 model with anchors './anchors/cluster_centroids_full_target_10.pkl' and active samples 'stage1_cac_list_0.05.txt', get the 'from_gta5_to_cityscapes_on_deeplab101_best_model_stage2.pkl'
+~~~~
+python3 train_active_stage2.py
+~~~~
 
 
 
