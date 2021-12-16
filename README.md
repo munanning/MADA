@@ -2,9 +2,9 @@ Multi-Anchor Active Domain Adaptation for Semantic Segmentation
 
 Munan Ning*, Donghuan Lu*, Dong Wei†, Cheng Bian, Chenglang Yuan, Shuang Yu, Kai Ma, Yefeng Zheng
 
-[Paper](https://arxiv.org/abs/2108.08012)
-[PPT](https://docs.google.com/presentation/d/1sJQ0OtPH6PhDC5W4BrVGvViit7crao2y/edit?usp=sharing&ouid=108503405808129646625&rtpof=true&sd=true)
-[Graphic Abstract](https://docs.google.com/presentation/d/1tgatWywexH-KIqdI5nePC9iP1NqwfcYa/edit?usp=sharing&ouid=108503405808129646625&rtpof=true&sd=true)
+[[Paper](https://arxiv.org/abs/2108.08012)]
+[[PPT](https://docs.google.com/presentation/d/1sJQ0OtPH6PhDC5W4BrVGvViit7crao2y/edit?usp=sharing&ouid=108503405808129646625&rtpof=true&sd=true)]
+[[Graphic Abstract](https://docs.google.com/presentation/d/1tgatWywexH-KIqdI5nePC9iP1NqwfcYa/edit?usp=sharing&ouid=108503405808129646625&rtpof=true&sd=true)]
 
 ## Table of Contents
 
